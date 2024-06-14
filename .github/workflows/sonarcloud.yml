@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt install clang build-essential
-          ./get-dependencies_linux.sh ubuntu build-all
+          sudo ./get-dependencies_linux.sh ubuntu build-all
       - name: Run build-wrapper
         run: |
           mkdir build
