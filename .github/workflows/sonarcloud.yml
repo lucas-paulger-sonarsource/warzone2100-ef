@@ -19,10 +19,11 @@ jobs:
         uses: SonarSource/sonarcloud-github-c-cpp@v2
       - name: Install dependencies
         run: |
+          sudo apt install clang build-essential
           ./get-dependencies_linux.sh ubuntu build-all
       - name: Run build-wrapper
         run: |
-          cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -GNinja -S .
+          CMAKE_C_COMPILER=clang CMAKE_CXX_COMPILER=clang++ cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -S .
           build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build
       - name: Run sonar-scanner
         env:
