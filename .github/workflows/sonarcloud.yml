@@ -20,6 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt install clang build-essential
+          git submodule update --recursive
           sudo ./get-dependencies_linux.sh ubuntu build-all
       - name: Run build-wrapper
         run: |
