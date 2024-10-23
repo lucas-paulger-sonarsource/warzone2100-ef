@@ -22,11 +22,11 @@ jobs:
           sudo apt install clang build-essential
           git submodule update --init --recursive
           sudo ./get-dependencies_linux.sh ubuntu build-all
-      # - name: Run build-wrapper
-      #   run: |
-      #     mkdir build
-      #     CMAKE_C_COMPILER=clang CMAKE_CXX_COMPILER=clang++ cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -S . -B build
-      #     build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build
+      - name: Run build-wrapper
+        run: |
+          mkdir build
+          CMAKE_C_COMPILER=clang CMAKE_CXX_COMPILER=clang++ cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -S . -B build
+          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build
       - name: Run sonar-scanner
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
