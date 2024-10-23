@@ -32,4 +32,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          sonar-scanner -X --define sonar.cfamily.compile-commands="${{ env.BUILD_WRAPPER_OUT_DIR }}/compile_commands.json" -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+          sonar-scanner -X --define sonar.cfamily.compile-commands="${{ env.BUILD_WRAPPER_OUT_DIR }}/compile_commands.json" -Dsonar.token=${{ secrets.SONAR_TOKEN }}   -Dsonar.host.url=https://dev5.sc-dev5.io
